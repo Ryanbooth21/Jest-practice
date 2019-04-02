@@ -26,8 +26,8 @@ test('Should be falsy', () => {
 
 test('User should be Brad Traversy object', () => {
     expect(functions.createUser()).toEqual({
-        firstName: 'Brad',
-        lastName: 'Traversy'
+        firstName: 'Ryan',
+        lastName: 'Booth'
     })
 })
 
@@ -59,3 +59,24 @@ test('John should be in usernames', () => {
     expect(usernames).toContain('John');
 })
 
+describe('removeSNames', () => {
+    it('should contain correct names', () => {
+        const names = ['Scott', 'Courtney', 'Sarah'];
+        expect(functions.removeSNames(names)).not.toContain('Scott');
+        expect(functions.removeSNames(names)).not.toContain('Sarah');
+        })
+    it('should not remove other names', () => {
+        const names = ['Scott', 'Courtney'];
+        expect(functions.removeSNames(names)).toContain('Courtney');
+        expect(functions.removeSNames(names)).not.toContain('Scott');
+        })
+    it('should account for case', () => {
+        const names = ['scott', 'Courtney'];
+        expect(functions.removeSNames(names)).not.toContain('Scott');
+        expect(functions.removeSNames(names)).not.toContain('scott');
+        })
+    })
+
+test('Fetch user should return data', () => {
+    expect(functions.fetchUser()).toBeDefined();
+})

@@ -5,15 +5,27 @@ const functions = {
     isNull: () => null,
     checkValue: (x) => x,
     createUser: () => {
-        const user = { firstName: 'Brad'}
-        user['lastName'] = 'Traversy';
+        const user = { firstName: 'Ryan'}
+        user['lastName'] = 'Booth';
         return user
     },
     fetchUser: () => {
-        axios.get('https://jsonplaceholder.typicode.com/users/1')
+        let result = axios.get('https://jsonplaceholder.typicode.com/users/1')
             .then(res => res.data)
             .catch(err => 'error')
+
+            return result
+    },
+    removeSNames: (names) => {
+        let newArray = names.filter(name => {
+                if (name.startsWith('S') || name.startsWith('s')){
+                    return null
+                } else {
+                    return name
+                }
+            })
+            return newArray
+        }
     }
-}
 
 module.exports = functions;
